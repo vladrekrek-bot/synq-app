@@ -1,0 +1,27 @@
+{
+  "name": "synq-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SYNQ — связка телефона и компьютера (демо). iOS через Capacitor, Windows через Electron",
+  "main": "electron/main.js",
+  "author": "SHKWIZI",
+  "dependencies": {
+    "@capacitor/core": "latest",
+    "@capacitor/ios": "latest"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.shkwizi.synq",
+    "productName": "SYNQ",
+    "files": ["electron/**", "www/**"],
+    "win": {
+      "icon": "resources/icon.ico",
+      "target": ["portable"],
+      "artifactName": "SYNQ-Windows.exe"
+    }
+  }
+}

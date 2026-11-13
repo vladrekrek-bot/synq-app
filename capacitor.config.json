@@ -1,0 +1,7 @@
+{
+  "appId": "com.shkwizi.synq",
+  "appName": "SYNQ",
+  "webDir": "www",
+  "backgroundColor": "#0b0d1a",
+  "ios": { "contentInset": "never", "backgroundColor": "#0b0d1a", "scrollEnabled": false }
+}

@@ -1,0 +1,21 @@
+# Рисует иконку SYNQ: AppIcon-1024.png (iOS), icon.png, icon.ico (Windows)
+import os
+from PIL import Image, ImageDraw, ImageFilter
+D = os.path.dirname(os.path.abspath(__file__))
+S = 1024
+blobs = Image.new('RGB', (S, S), '#0b0d1a'); bd = ImageDraw.Draw(blobs)
+bd.ellipse((-200, -200, 600, 600), fill='#5b4bff')
+bd.ellipse((500, 300, 1200, 1000), fill='#c04bff')
+bd.ellipse((100, 650, 700, 1250), fill='#14c8b0')
+img = blobs.filter(ImageFilter.GaussianBlur(160))
+d = ImageDraw.Draw(img, 'RGBA')
+d.rounded_rectangle((170, 170, 854, 854), radius=150, fill=(255, 255, 255, 40), outline=(255, 255, 255, 90), width=6)
+d.rounded_rectangle((270, 330, 640, 580), radius=28, outline='white', width=26)
+d.rectangle((420, 580, 490, 640), fill='white'); d.rounded_rectangle((360, 630, 550, 660), radius=12, fill='white')
+d.rounded_rectangle((640, 400, 760, 640), radius=26, fill=(30, 30, 60, 255), outline='white', width=22)
+d.line((330, 720, 700, 720), fill='white', width=24); d.polygon([(700, 690), (750, 720), (700, 750)], fill='white')
+d.line((700, 270, 330, 270), fill='white', width=24); d.polygon([(330, 240), (280, 270), (330, 300)], fill='white')
+img.save(os.path.join(D, 'AppIcon-1024.png'))
+img.resize((512, 512)).save(os.path.join(D, 'icon.png'))
+img.resize((256, 256)).save(os.path.join(D, 'icon.ico'), sizes=[(256, 256), (128, 128), (64, 64), (48, 48), (32, 32), (16, 16)])
+print('icons ok')
